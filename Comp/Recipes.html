@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Ham Sab Ka Atta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-charcoal: #212529;
+            --cream-bg: #fffbf2;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            margin: 0; padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- 1. SAME GLASS NAVBAR --- */
+        .navbar {
+            background: rgba(33, 37, 41, 0.321); /* Dark background for visibility */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: rgb(0, 0, 0) !important;
+            letter-spacing: 2px;
+        }
+        .navbar-brand span { color: var(--primary-gold); }
+        .nav-link {
+            color: rgba(0, 0, 0, 0.8) !important;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--primary-gold) !important; }
+        
+        .btn-custom {
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .btn-primary-custom {
+            background-color: var(--dark-charcoal);
+            color: white;
+            border: none;
+        }
+         
+
+        /* --- 2. RECIPE HERO (Parallax) --- */
+        .recipe-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1920&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+        }
+
+        /* --- 3. FILTER BUTTONS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--dark-charcoal);
+            color: var(--dark-charcoal);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark-charcoal);
+            color: var(--primary-gold);
+            transform: translateY(-3px);
+        }
+
+        /* --- 4. RECIPE CARDS (The Magic) --- */
+        .recipe-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            height: 100%;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-img-wrap {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+        
+        /* Image Zoom on Hover */
+        .recipe-card:hover .card-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .recipe-info {
+            padding: 25px;
+        }
+        
+        .recipe-cat {
+            font-size: 0.8rem;
+            color: var(--primary-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .recipe-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin: 10px 0;
+            color: var(--dark-charcoal);
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 15px;
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .recipe-meta i { color: var(--primary-gold); margin-right: 5px; }
+
+        /* --- 5. MODAL STYLING (The Popup) --- */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        .modal-header {
+            background: var(--dark-charcoal);
+            color: white;
+            border: none;
+        }
+        .modal-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        .modal-body { padding: 0; }
+        .modal-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .modal-text-area { padding: 30px; }
+        .ingredient-list { list-style: none; padding: 0; }
+        .ingredient-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        .ingredient-list li i { color: var(--primary-gold); margin-right: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">HUM SAB KA <span>ATTA</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Process.html">Our Process</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./Recipes.html">Recipes</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="./Order_now.html" class="btn btn-custom btn-primary-custom">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="recipe-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="hero-sub">Kitchen Secrets</span>
+            <h1 class="hero-title">Taste The Tradition</h1>
+            <p class="lead">Healthy, Tasty & Simple recipes made with pure love & pure atta.</p>
+        </div>
+    </section>
+
+    <section class="container pb-5">
+        
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterRecipes('all')">All Recipes</button>
+            <button class="filter-btn" onclick="filterRecipes('roti')">Roti & Naan</button>
+            <button class="filter-btn" onclick="filterRecipes('paratha')">Parathas</button>
+            <button class="filter-btn" onclick="filterRecipes('sweet')">Sweets (Halwa)</button>
+        </div>
+
+        <div class="row g-4" id="recipeGrid">
+            
+            <div class="col-md-4 col-sm-6 recipe-item roti">
+                <div class="recipe-card" data-bs-toggle="modal" data-bs-target="#recipeModal1">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=1000&auto=format&fit=crop" alt="Soft Phulka">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Daily Special</span>
+                        <h3 class="recipe-title">Perfect Soft Phulka</h3>
+                        <p class="small text-muted">Ghar ki naram roti banane ka raaz.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 20 Min</span>
+                            <span><i class="fas fa-user-friends"></i> 4 Servings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 recipe-item paratha">
+                <div class="recipe-card" data-bs-toggle="modal" data-bs-target="#recipeModal1"> <div class="card-img-wrap">
+                        <img src="https://t4.ftcdn.net/jpg/01/99/32/38/360_F_199323865_j7eQ49QeE9pQy9F7e6k2i0h4.jpg" alt="Aloo Paratha">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Breakfast</span>
+                        <h3 class="recipe-title">Crispy Aloo Paratha</h3>
+                        <p class="small text-muted">Spicy potato filling in whole wheat layers.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 30 Min</span>
+                            <span><i class="fas fa-fire"></i> Medium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 recipe-item sweet">
+                <div class="recipe-card" data-bs-toggle="modal" data-bs-target="#recipeModal1">
+                    <div class="card-img-wrap">
+                        <img src="https://img.freepik.com/premium-photo/suji-ka-halwa-is-indian-dish-cooked-with-semolina-garnished-with-dry-fruits_466689-76228.jpg" alt="Suji Halwa">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Dessert</span>
+                        <h3 class="recipe-title">Danedaar Suji Halwa</h3>
+                        <p class="small text-muted">Traditional sweet dish for celebrations.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 15 Min</span>
+                            <span><i class="fas fa-star"></i> Easy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 recipe-item paratha">
+                <div class="recipe-card">
+                    <div class="card-img-wrap">
+                        <img src="https://st4.depositphotos.com/19960896/23674/i/450/depositphotos_236746816-stock-photo-laccha-paratha-layered-flat-bread.jpg" alt="Lachha Paratha">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Special</span>
+                        <h3 class="recipe-title">Lachha Paratha</h3>
+                        <p class="small text-muted">Multi-layered crispy flatbread.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 40 Min</span>
+                            <span><i class="fas fa-chart-line"></i> Hard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 recipe-item roti">
+                <div class="recipe-card">
+                    <div class="card-img-wrap">
+                        <img src="https://media.istockphoto.com/id/1292635321/photo/naan-bread-with-garlic-and-coriander.jpg?s=612x612&w=0&k=20&c=B3-y3r-g4pQd9W4-z6-1z8z4-y-7-x-7-x-7-x-7" alt="Garlic Naan">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Restaurant Style</span>
+                        <h3 class="recipe-title">Tawa Garlic Naan</h3>
+                        <p class="small text-muted">No tandoor needed, make it on tawa.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 25 Min</span>
+                            <span><i class="fas fa-fire"></i> Medium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-4 col-sm-6 recipe-item sweet">
+                <div class="recipe-card">
+                    <div class="card-img-wrap">
+                        <img src="https://media.istockphoto.com/id/1141108259/photo/puri-bhaji-indian-dish.jpg?s=612x612&w=0&k=20&c=q1-y1-1-1-1-1-1-1-1-1-1-1-1-1-1" alt="Puri">
+                    </div>
+                    <div class="recipe-info">
+                        <span class="recipe-cat">Weekend Breakfast</span>
+                        <h3 class="recipe-title">Fluffy Puri</h3>
+                        <p class="small text-muted">Best served with Halwa and Channay.</p>
+                        <div class="recipe-meta">
+                            <span><i class="far fa-clock"></i> 20 Min</span>
+                            <span><i class="fas fa-star"></i> Easy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="modal fade" id="recipeModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Perfect Soft Phulka</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=1000&auto=format&fit=crop" class="modal-img" alt="Recipe Detail">
+                    <div class="modal-text-area">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h5 class="mb-3 text-uppercase fw-bold text-muted">Ingredients</h5>
+                                <ul class="ingredient-list">
+                                    <li><i class="fas fa-check-circle"></i> 2 Cups Whole Wheat Atta</li>
+                                    <li><i class="fas fa-check-circle"></i> 1 Cup Warm Water</li>
+                                    <li><i class="fas fa-check-circle"></i> 1 tsp Oil/Ghee</li>
+                                    <li><i class="fas fa-check-circle"></i> Pinch of Salt</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-7">
+                                <h5 class="mb-3 text-uppercase fw-bold text-muted">Instructions</h5>
+                                <p>1. Atta mein namak mix karein aur neem garam pani se goondh lein.</p>
+                                <p>2. Aatay ko 20 minute ke liye dhak kar rakh dein (Resting time is key).</p>
+                                <p>3. Pede banayein aur patli roti bel lein.</p>
+                                <p>4. Tawa garam karein aur dono taraf se paka lein.</p>
+                                <p>5. Desi Ghee laga kar garma garam serve karein.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container mb-5">
+        <div class="bg-dark text-white p-5 rounded-4 text-center position-relative overflow-hidden">
+            <div style="position: relative; z-index: 2;">
+                <i class="fas fa-hat-chef fa-3x mb-3 text-warning"></i>
+                <h2 class="font-bebas display-5">Chef's Secret Tip</h2>
+                <p class="lead"></p>
+            </div>
+            <div style="position:absolute; top:-50px; right:-50px; width:200px; height:200px; background:var(--primary-gold); border-radius:50%; opacity:0.2;"></div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function filterRecipes(category) {
+            // 1. Buttons ki styling change karein
+            let buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 2. Items ko Hide/Show karein
+            let items = document.querySelectorAll('.recipe-item');
+            
+            items.forEach(item => {
+                if(category === 'all') {
+                    item.style.display = 'block';
+                    // Animation reset
+                    item.classList.add('animate__animated', 'animate__fadeIn');
+                } else {
+                    if(item.classList.contains(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

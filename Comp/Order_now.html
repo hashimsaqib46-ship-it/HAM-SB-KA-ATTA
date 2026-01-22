@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Ham Sab Ka Atta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-charcoal: #212529;
+            --cream-bg: #fffbf2;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            overflow-x: hidden;
+        }
+
+        /* --- 1. NAVBAR (Transparent over video) --- */
+        .navbar {
+          background: rgba(33, 37, 41, 0.321); /* Dark background for visibility */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 11px 0;
+            z-index: 1000;
+            width: 100%;
+        }
+        .navbar-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: rgb(0, 0, 0) !important;
+            letter-spacing: 2px;
+        }
+        .navbar-brand span { color: var(--primary-gold); }
+        .nav-link { color: rgba(0, 0, 0, 0.9) !important; font-weight: 200; margin: 0 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-gold) !important; }
+
+ 
+
+        /* --- 3. MAIN CONTENT SECTION (Below Video) --- */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        /* LEFT SIDE: Sale/Info */
+        .info-box {
+            padding-right: 30px;
+        }
+        .sale-tag {
+            background: #e74c3c;
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        .info-heading {
+             font-family: 'Bebas Neue', sans-serif;
+             font-size: 3.5rem;
+             color: var(--dark-charcoal);
+             line-height: 1;
+        }
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        .benefit-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        .benefit-list li i {
+            color: var(--primary-gold);
+            margin-right: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* RIGHT SIDE: The Form */
+        .form-container-sleek {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-gold);
+        }
+        
+        .form-title { font-family: 'Bebas Neue'; font-size: 2rem; margin-bottom: 25px; color: var(--dark-charcoal); }
+
+        /* Weight Selection Styling */
+        .weight-radio-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .weight-radio-group input { display: none; }
+        .weight-label-box {
+            flex: 1;
+            border: 2px solid #eee;
+            background: #f9f9f9;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .weight-radio-group input:checked + .weight-label-box {
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--dark-charcoal);
+            font-weight: bold;
+        }
+
+        .form-control-sleek {
+            border: none;
+            border-bottom: 2px solid #ddd;
+            border-radius: 0;
+            padding: 15px 5px;
+            background: transparent;
+        }
+        .form-control-sleek:focus {
+            box-shadow: none;
+            border-color: var(--primary-gold);
+        }
+
+        .btn-confirm {
+            width: 100%; padding: 15px;
+            background: var(--dark-charcoal); color: white;
+            font-weight: bold; border: none; border-radius: 50px;
+            font-size: 1.1rem; letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-confirm:hover { background: var(--primary-gold); color: var(--dark-charcoal); }
+
+        .live-total { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--primary-gold); float: right; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        
+        /* Mobile Fix */
+        @media (max-width: 991px) {
+             .video-hero-container { height: 50vh; }
+             .video-overlay-text h1 { font-size: 2.5rem; }
+             .info-box { margin-bottom: 40px; padding-right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg" style="position: fixed;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">HAM SAB KA <span>ATTA</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Process.html">Process</a></li>
+                    <li class="nav-item"><a class="nav-link  " href="./Recipes.html">Recipes</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+     
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <div class="col-lg-6">
+                    <div class="info-box">
+                        <span class="sale-tag"><i class="fas fa-fire me-2"></i> Limited Time Offer</span>
+                        <h2 class="info-heading">Aaj Order Karein, <br> Kal Free Delivery Payein.</h2>
+                        <p class="lead text-muted mt-3">
+                            Humara waving bag aapke kitchen mein aane ke liye be-taab hai. Abhi stock fresh hai.
+                        </p>
+                        
+                        <ul class="benefit-list">
+                            <li><i class="fas fa-check-circle"></i> 100% Stone Ground (Desi Chakki)</li>
+                            <li><i class="fas fa-check-circle"></i> No Added Maida or Preservatives</li>
+                            <li><i class="fas fa-truck-fast"></i> Free Delivery (On 10kg & 20kg)</li>
+                            <li><i class="fas fa-hand-holding-dollar"></i> Cash on Delivery Available</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="form-container-sleek">
+                        <h3 class="form-title">Complete Your Order</h3>
+                        
+                        <form>
+                            <label class="form-label fw-bold">Select Pack Size:</label>
+                            <div class="weight-radio-group">
+                                <label>
+                                    <input type="radio" name="packSize" value="800" onclick="updateTotal(800)">
+                                    <div class="weight-label-box">5 KG <br> <small>Rs. 800</small></div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="packSize" value="1500" checked onclick="updateTotal(1500)">
+                                    <div class="weight-label-box">10 KG <br> <small>Rs. 1500</small></div>
+                                </label>
+                                <label>
+                                    <input type="radio" name="packSize" value="2900" onclick="updateTotal(2900)">
+                                    <div class="weight-label-box">20 KG <br> <small>Rs. 2900</small></div>
+                                </label>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-sleek" placeholder="Full Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control form-control-sleek" placeholder="WhatsApp Number" required>
+                            </div>
+                            <div class="mb-4">
+                                <input type="text" class="form-control form-control-sleek" placeholder="Complete Delivery Address" required>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-4 align-middle">
+                                <span class="text-muted fw-bold">Total Payable:</span>
+                                <span class="live-total" id="totalPrice">Rs. 1500</span>
+                            </div>
+
+                            <button type="submit" class="btn-confirm">CONFIRM ORDER NOW</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function updateTotal(price) {
+            document.getElementById('totalPrice').innerText = "Rs. " + price;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

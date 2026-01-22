@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ham Sab Ka Atta - Premium Quality</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!--herosectionsssssssssssssssssss-->
+<style>
+          
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-charcoal: #212529;
+            --cream-bg: #fffbf2;  
+            --glass-nav: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream-bg);
+            overflow-x: hidden;
+        }
+ 
+        .navbar {
+            background: rgba(255, 255, 255, 0.1); /* Transparent Base */
+            backdrop-filter: blur(15px); /* Strong Blur Effect */
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--dark-charcoal) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-gold);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-charcoal) !important;
+            margin: 0 10px;
+            position: relative;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Nav Link Hover Effect */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -5px; left: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .btn-custom {
+            border-radius: 50px;
+            padding: 10px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--dark-charcoal);
+            color: white;
+            border: 2px solid var(--dark-charcoal);
+        }
+        .btn-primary-custom:hover {
+            background-color: transparent;
+            color: var(--dark-charcoal);
+        }
+
+      /* 1. Video ko 'Fixed' kar denge taake wo hile nahi */
+.bg-video {
+    position: fixed;  /* Pehle 'absolute' tha, ab 'fixed' kar diya */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Sab se peeche bhej diya */
+}
+
+/* 2. Hero Section ka background transparent rakhenge */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Scroll bar na aye extra */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Isay transparent rakhna zaroori hai */
+}
+
+/* 3. MOST IMPORTANT: Baqi Sections ke liye Z-Index set karna */
+/* Is code ko bhi CSS mein add kar dena, warna video neechay walay sections mein bhi dikhegi */
+.impact-section, 
+.nutrition-section, 
+.faq-section, 
+.more-products-section, 
+.footer {
+    position: relative;
+    background-color: var(--cream-bg); /* Ya #fffbf2 */
+    z-index: 10; /* Taake yeh Video ke UPAR aa kar usay dhak lein */
+}
+
+        /* White Overlay Layer (Video ke upar) */
+        .overlay-layer {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: var(--cream-bg); /* Yeh page ka main color hai */
+            z-index: 2;
+            /* YEH HAI MAGIC: Screen mode black text ko transparent bana deta hai */
+            mix-blend-mode: screen; 
+        }
+
+        /* Content Container (Overlay ke andar) */
+        .hero-content {
+            position: relative;
+            z-index: 3; /* Z-index doesn't matter much inside mix-blend but needed for structure */
+            text-align: center;
+            width: 100%;
+        }
+
+        /* The Masked Text (Black Text becomes "Window" to video) */
+        .masked-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12vw; /* Massive responsive size */
+            line-height: 0.9;
+            color: black; /* Must be BLACK for screen blend mode to work */
+            background-color: white; /* Fallback */
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .sub-hero-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem; 
+            color: #555; /* Yeh grey dikhega kyunke ye mix-blend ke bahar hoga */
+            margin-top: 20px;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Buttons floating above everything */
+        .cta-container {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* Sabse upar */
+        }
+
+        .btn-hero {
+            background: var(--primary-gold);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            background: #bfa030;
+            color: white;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+        .scroll-mouse {
+            width: 30px; height: 50px;
+            border: 2px solid var(--dark-charcoal);
+            border-radius: 20px;
+            display: flex; justify-content: center; padding-top: 10px;
+        }
+        .scroll-wheel {
+            width: 4px; height: 8px;
+            background: var(--dark-charcoal);
+            border-radius: 2px;
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);} 40% {transform: translateX(-50%) translateY(-10px);} 60% {transform: translateX(-50%) translateY(-5px);} }
+        @keyframes scroll { 0% {opacity: 1; transform: translateY(0);} 100% {opacity: 0; transform: translateY(15px);} }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .masked-text { font-size: 18vw; }
+            .sub-hero-text { font-size: 1rem; }
+            .cta-container { bottom: 120px; width: 100%; text-align: center; }
+        }
+
+</style>
+
+ <!--impactttttttttttttttttttttttttttttttttttt-->
+<style>
+    /* --- IMPACT SECTION STYLES --- */
+    .impact-section {
+        padding: 80px 0;
+        background-color: var(--cream-bg); /* Same as Hero */
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Floating Image Animation */
+    .product-showcase {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .floating-bag {
+        max-width: 65%;
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+        animation: floatBag 4s ease-in-out infinite;
+    }
+
+    /* Gold Circle Behind Product */
+    .bg-circle {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px; height: 400px;
+        background-color: #D4AF37; /* Gold */
+        opacity: 0.1;
+        border-radius: 50%;
+        z-index: -1;
+        animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes floatBag {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(1deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes pulseGlow {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+        100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
+    }
+
+    /* Text Styling */
+    .section-subtitle {
+        color: var(--primary-gold);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3.5rem;
+        color: var(--dark-charcoal);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    /* Feature Cards Grid */
+    .feature-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-gold);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+    }
+
+    .icon-box {
+        width: 60px; height: 60px;
+        background-color: var(--cream-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-gold);
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .feature-text h5 {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0;
+        color: var(--dark-charcoal);
+    }
+    .feature-text p {
+        margin: 0;
+        font-size: 0.55rem;
+        color: #666;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+        .section-title { font-size: 2.5rem; }
+        .bg-circle { width: 300px; height: 300px; }
+        .floating-bag { max-width: 70%; margin-bottom: 40px; }
+    }
+</style>
+
+<!--nutrii break downnnnnnnnnnnnnnnnn-->
+<style>
+    /* --- NUTRITION SECTION --- */
+    .nutrition-section {
+        padding: 100px 0;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .nutrition-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 60px;
+        color: var(--dark-charcoal);
+    }
+    
+    .nutrition-subtitle {
+        text-align: center;
+        color: #777;
+        margin-bottom: 50px;
+        font-family: 'Poppins', sans-serif;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* THE BLOB CARD CONTAINER */
+    .nutri-card {
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .nutri-card:hover {
+        transform: translateY(-10px);
+    }
+
+    /* THE ORGANIC SHAPE (BLOB) */
+    .blob-shape {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+        
+        /* Animation setup */
+        animation: morph 6s ease-in-out infinite;
+        transition: all 0.5s ease;
+    }
+
+    /* Percentage Text inside Blob */
+    .blob-percent {
+        font-size: 2.5rem;
+        font-family: 'Bebas Neue', sans-serif;
+        line-height: 1;
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    }
+    .blob-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.9;
+    }
+
+    /* Text below blob */
+    .nutri-desc {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--dark-charcoal);
+        margin-top: 15px;
+    }
+    .nutri-detail {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    /* --- DIFFERENT COLORS & SHAPES FOR EACH BOX --- */
+    
+    /* Box 1: Protein (Red/Orange) */
+    .blob-1 {
+        background: linear-gradient(135deg, #FF6B6B, #EE5253);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        animation-delay: 0s;
+    }
+    
+    /* Box 2: Fiber (Green) */
+    .blob-2 {
+        background: linear-gradient(135deg, #1DD1A1, #10AC84);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        animation-delay: 1s;
+    }
+
+    /* Box 3: Iron (Blue/Purple) */
+    .blob-3 {
+        background: linear-gradient(135deg, #54A0FF, #2E86DE);
+        border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+        animation-delay: 2s;
+    }
+
+    /* Box 4: Vitamins (Yellow/Gold) */
+    .blob-4 {
+        background: linear-gradient(135deg, #FECA57, #FF9F43);
+        border-radius: 80% 20% 50% 50% / 40% 60% 30% 70%;
+        animation-delay: 3s;
+    }
+
+    /* --- ANIMATION KEYFRAMES (Morphing) --- */
+    @keyframes morph {
+        0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    }
+
+    /* Mobile Fix */
+    @media (max-width: 768px) {
+        .blob-shape { width: 120px; height: 120px; }
+        .blob-percent { font-size: 2rem; }
+    }
+</style>
+
+<!--productsssssssssssssssssssssssssssss-->
+<style>
+    /* --- PRODUCT SHOWCASE STYLING --- */
+    .more-products-section {
+        padding: 100px 0;
+        background-color: #fffbf2; /* Matches base theme */
+        overflow: hidden;
+    }
+
+    .section-header-center {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .sub-tag {
+        color: var(--primary-gold);
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .main-head {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3.5rem;
+        color: var(--dark-charcoal);
+    }
+
+    /* THE PRODUCT CONTAINER (Grid) */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 Products side by side */
+        gap: 30px;
+        position: relative;
+    }
+
+    /* INDIVIDUAL PRODUCT ITEM (No Borders, No Card Look) */
+    .prod-item {
+        position: relative;
+        text-align: center;
+        padding: 40px 20px;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 1;
+    }
+
+    /* The "Splash" Background (Hidden initially) */
+    .prod-splash {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 300px; height: 300px;
+        border-radius: 50%;
+        z-index: -1;
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0.2;
+    }
+
+    /* Product Image styling */
+    .prod-img {
+        max-width: 80%;
+        height: auto;
+        filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
+        transform: scale(1) rotate(0deg);
+        transition: all 0.5s ease;
+    }
+
+    /* Text details (Hidden initially, slides up on hover) */
+    .prod-details {
+        margin-top: 20px;
+        opacity: 0.7;
+        transform: translateY(10px);
+        transition: all 0.4s ease;
+    }
+    
+    .prod-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        margin: 0;
+        color: var(--dark-charcoal);
+    }
+    
+    .prod-desc {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .shop-btn-link {
+        color: var(--dark-charcoal);
+        font-weight: bold;
+        text-decoration: none;
+        border-bottom: 2px solid var(--primary-gold);
+        opacity: 0; /* Hidden by default */
+        transform: translateY(10px);
+        display: inline-block;
+        transition: all 0.3s ease 0.1s; /* Slight delay */
+    }
+
+    /* --- HOVER EFFECTS (The Magic) --- */
+    .prod-item:hover .prod-splash {
+        transform: translate(-50%, -50%) scale(1.5); /* Big splash background */
+    }
+
+    .prod-item:hover .prod-img {
+        transform: scale(1.15) translateY(-15px) rotate(3deg); /* Levitate & Tilt */
+        filter: drop-shadow(0 30px 30px rgba(0,0,0,0.25));
+    }
+
+    .prod-item:hover .prod-details {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .prod-item:hover .shop-btn-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* --- SPECIFIC COLORS FOR SPLASHES --- */
+    .splash-1 { background-color: #f1c40f; } /* Yellow for Suji */
+    .splash-2 { background-color: #ecf0f1; border: 2px solid #bdc3c7; } /* White/Grey for Maida */
+    .splash-3 { background-color: #e67e22; } /* Orange for Daliya */
+
+
+    /* --- MOBILE RESPONSIVE (Horizontal Scroll / Swipe) --- */
+    @media (max-width: 768px) {
+        .product-grid {
+            display: flex;
+            overflow-x: auto; /* Horizontal Scroll enabled */
+            scroll-snap-type: x mandatory; /* Smooth snapping */
+            gap: 20px;
+            padding-bottom: 30px; /* Space for scrollbar */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .prod-item {
+            flex: 0 0 85%; /* Shows 85% of one item, teasing the next */
+            scroll-snap-align: center;
+            background: white; /* Mobile needs background as user can't hover */
+            border-radius: 20px;
+            margin: 0 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+        /* On mobile, show details by default */
+        .prod-details, .shop-btn-link {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+        
+        .prod-img {
+            max-width: 60%;
+            margin-bottom: 20px;
+        }
+        
+        .prod-splash {
+            display: none; /* Mobile mein heavy splash hata diya for clean look */
+        }
+    }
+</style>
+
+<!--freqqqqqqqqqqqqqqqqqqqqqqqqquestions-->
+<style>
+    /* --- FAQ SECTION STYLING --- */
+    .faq-section {
+        padding: 100px 0;
+        background-color: #f8f9fa; /* Light Grey to separate from white */
+        position: relative;
+    }
+
+    /* Left Side Styling */
+    .faq-header-area {
+        padding-right: 30px;
+    }
+    .faq-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3.5rem;
+        color: var(--dark-charcoal);
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+    .faq-text {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+    }
+    
+    /* Support Box (Call to Action) */
+    .support-box {
+        background: var(--dark-charcoal);
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .support-box h4 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: var(--primary-gold);
+    }
+    .support-icon {
+        font-size: 4rem;
+        position: absolute;
+        bottom: -10px; right: -10px;
+        opacity: 0.1;
+        transform: rotate(-15deg);
+    }
+
+    /* --- CUSTOM ACCORDION (The Magic Part) --- */
+    .custom-accordion .accordion-item {
+        border: none;
+        margin-bottom: 15px;
+        border-radius: 15px !important;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover Effect */
+    .custom-accordion .accordion-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Active (Open) State Border */
+    .custom-accordion .accordion-item.active-item {
+        border-left: 5px solid var(--primary-gold);
+    }
+
+    .accordion-button {
+        background-color: white;
+        color: var(--dark-charcoal);
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 20px 25px;
+        box-shadow: none !important; /* Remove blue outline */
+    }
+
+    /* When Button is Clicked (Open) */
+    .accordion-button:not(.collapsed) {
+        background-color: var(--cream-bg);
+        color: var(--dark-charcoal);
+        font-weight: 700;
+    }
+
+    /* Remove default arrow and add custom + / - */
+    .accordion-button::after {
+        background-image: none;
+        content: '\f067'; /* FontAwesome Plus Icon */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--primary-gold);
+        transition: transform 0.3s ease;
+    }
+    
+    .accordion-button:not(.collapsed)::after {
+        content: '\f068'; /* FontAwesome Minus Icon */
+        transform: rotate(180deg);
+        color: var(--dark-charcoal);
+    }
+
+    .accordion-body {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        padding: 0 25px 25px 25px;
+        background-color: var(--cream-bg);
+    }
+    
+    @media (max-width: 768px) {
+        .faq-title { font-size: 2.5rem; }
+        .faq-header-area { padding-right: 0; margin-bottom: 40px; }
+    }
+</style>
+
+<!--footerrrrrrrrrrrrrrrrrrrrrrrrr-->
+<style>
+    /* --- FOOTER CONTAINER --- */
+    .footer {
+        position: relative;
+        background: var(--dark-charcoal); /* Footer Base Color */
+        color: #fff; 
+    }
+ 
+    /* --- FOOTER CONTENT --- */
+    .footer-content {
+        padding: 50px 0 20px 0;
+        position: relative;
+        z-index: 1001; /* Above waves */
+    }
+
+    /* Column Styling */
+    .footer-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.5rem;
+        color: var(--primary-gold);
+        text-decoration: none;
+        letter-spacing: 2px;
+    }
+    .footer-desc {
+        color: #aaa;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        line-height: 1.6;
+    }
+
+    .footer-heading {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        position: relative;
+    }
+    /* Gold underline under heading */
+    .footer-heading::after {
+        content: '';
+        position: absolute;
+        left: 0; bottom: -5px;
+        width: 40px; height: 3px;
+        background-color: var(--primary-gold);
+    }
+
+    /* Links */
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+    .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+    }
+    .footer-links a:hover {
+        color: var(--primary-gold);
+        padding-left: 10px; /* Slight slide effect */
+    }
+    .footer-links a i {
+        margin-right: 10px;
+        font-size: 0.8rem;
+        color: var(--primary-gold);
+    }
+
+    /* Contact Info */
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        color: #ccc;
+    }
+    .contact-icon {
+        background: rgba(212, 175, 55, 0.2);
+        color: var(--primary-gold);
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    .contact-info p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #fff;
+    }
+    .contact-info span {
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    /* Social Icons */
+    .social-icons a {
+        display: inline-flex;
+        width: 35px; height: 35px;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 10px;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .social-icons a:hover {
+        background: var(--primary-gold);
+        transform: translateY(-3px);
+    }
+
+    /* --- COPYRIGHT BAR --- */
+    .copyright-area {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding: 20px 0;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #777;
+    }
+    
+    .codedclouds-link {
+        color: var(--primary-gold);
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        position: relative;
+    }
+    .codedclouds-link:hover {
+        color: white;
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    }
+    .heart-beat {
+        color: red;
+        animation: beat 1s infinite;
+        display: inline-block;
+    }
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+    }
+
+    /* Mobile Fix */
+    @media(max-width:768px){
+        .waves-container { height: 60px; top: -60px; }
+        .footer-heading { margin-top: 30px; }
+    }
+</style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">HUM SAB KA <span>ATTA</span></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Comp/Process.html">Our Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Comp/Recipes.html">Recipes</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="./Comp/Order_now.html" class="btn btn-custom btn-primary-custom">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!--herosectionnnnnnnnnnnnnnnn-->
+    <section class="hero-section">
+        
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="./images/samp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="overlay-layer d-flex align-items-center justify-content-center flex-column">
+            <div class="hero-content">
+                <h1 class="masked-text">PURE ORGANIC TASTE</h1>
+                <h1 class="masked-text"></h1>
+                <h1 class="masked-text"></h1>
+            </div>
+        </div>
+
+        <div class="cta-container text-center">
+            <p class="sub-hero-text mb-4">Freshly Milled • STONE GROUND • NO PRESERVATIVES</p>
+            <a href="./Comp/Order_now.html" class="btn-hero">SHOP NOW <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+
+         
+
+    </section>
+
+<!--impactttttttttttttttttttttttttttttttttttt-->
+<section class="impact-section">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="product-showcase">
+                    <div class="bg-circle"></div>
+                    <img src="./images/yellow.png" alt="Ham Sab Ka Atta Bag" class="img-fluid floating-bag">
+                </div>
+            </div>
+
+            <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                <span class="section-subtitle">The Purity You Trust</span>
+                <h2 class="section-title">100% Atta,<br><p style="color: #bfa03084; font-size: 50px;">0% Milawat</p></h2>
+                <p class="lead text-muted mb-4">
+                    Humara atta sidha kisan ke khet se, bina kisi chemical ya milawat ke aap tak pohanchta hai. Wohi purana zaiqa, nayi packing mein.
+                </p>
+
+                <div class="row g-3">
+                    
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                            <div class="feature-text">
+                                <h5>100% Whole Wheat</h5>
+                                <p>Poora anaaj, poori taqat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-bread-slice"></i></div>
+                            <div class="feature-text">
+                                <h5>Soft Rotis</h5>
+                                <p>Subah se shaam tak naram.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+                            <div class="feature-text">
+                                <h5>Rich in Fiber</h5>
+                                <p>Hazma behtar, sehat behtar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="feature-card">
+                            <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                            <div class="feature-text">
+                                <h5>Stone Ground</h5>
+                                <p>Desi Chakki ka asli maza.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <div class="mt-4">
+                    <a href="./Comp/Process.html" class="btn btn-custom btn-primary-custom mt-3">See Our Process</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><script>
+  AOS.init({
+      duration: 1000,
+      once: true
+  });
+</script>
+
+<!--nutrii break downnnnnnnnnnnnnnnnn-->
+<section class="nutrition-section">
+    <div class="container">
+        
+        <div data-aos="fade-up">
+            <h2 class="nutrition-title">What's Inside The Bag?</h2>
+            <p class="nutrition-subtitle">Sirf pait nahi bharta, sehat bhi banata hai. Humare har danay mein qudrati taqat hai.</p>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                <div class="nutri-card">
+                    <div class="blob-shape blob-1">
+                        <span class="blob-percent">12%</span>
+                        <span class="blob-label">Protein</span>
+                    </div>
+                    <div class="nutri-desc">Natural Strength</div>
+                    <div class="nutri-detail">Muscles ki taqat ke liye.</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                <div class="nutri-card">
+                    <div class="blob-shape blob-2">
+                        <span class="blob-percent">15%</span>
+                        <span class="blob-label">Fiber</span>
+                    </div>
+                    <div class="nutri-desc">Easy Digestion</div>
+                    <div class="nutri-detail">Hazma rakhe durust.</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                <div class="nutri-card">
+                    <div class="blob-shape blob-3">
+                        <span class="blob-percent">100%</span>
+                        <span class="blob-label">Whole</span>
+                    </div>
+                    <div class="nutri-desc">Zero Maida</div>
+                    <div class="nutri-detail">Sirf gandum, no milawat.</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                <div class="nutri-card">
+                    <div class="blob-shape blob-4">
+                        <span class="blob-percent">VIT</span>
+                        <span class="blob-label">B1 & B3</span>
+                    </div>
+                    <div class="nutri-desc">Energy Boost</div>
+                    <div class="nutri-detail">Pura din active rahein.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!--productsssssssssssssssssssssssssssss-->
+<section class="more-products-section">
+    <div class="container">
+        
+        <div class="section-header-center" data-aos="fade-up">
+            <span class="sub-tag">Complete Range</span>
+            <h2 class="main-head">More From Our Family</h2>
+            <p class="text-muted">Sirf Atta hi nahi, hum late hain aapke kitchen ke liye aur bhi khalis cheezein.</p>
+        </div>
+
+        <div class="product-grid">
+            
+            <div class="prod-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="prod-splash splash-1"></div>
+                <img src="./images/yellow.png" alt="loading..." class="prod-img" style="max-width: 61%;">
+                <div class="prod-details">
+                    <h3 class="prod-title">White Flour</h3>
+                    <p class="prod-desc">For Pizza, Naan & Baking.</p>
+                    <a href="#" class="shop-btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="prod-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="prod-splash splash-2"></div>
+                <img src="./images/contact.png" alt="loading..." class="prod-img">
+                <div class="prod-details">
+                    <h3 class="prod-title">Brown Flour</h3>
+                    <p class="prod-desc">Perfect for Rozana roti / chapati.</p>
+                    <a href="#" class="shop-btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="prod-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="prod-splash splash-3"></div>
+                <img src="./images/contact.png" alt="Wheat Porridge" class="prod-img">
+                <div class="prod-details">
+                    <h3 class="prod-title">Unavaliable Right Now</h3>
+                    <p class="prod-desc">- - -</p>
+                    <a href="#" class="shop-btn-link">No More Details <i class="fas"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!--freqqqqqqqqqqqqqqqqqqqqqqqqquestions-->
+<section class="faq-section">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-5 mb-4" data-aos="fade-right">
+                <div class="faq-header-area">
+                    <span class="text-uppercase text-muted fw-bold ls-2 small">Common Queries</span>
+                    <h2 class="faq-title">You Ask,<br>We Answer.</h2>
+                    <p class="faq-text">
+                       Khareedari se pehle aam sawalon ke jawab yahan mojood hain aap ka bharosa hamari zimmedari hai
+                    </p>
+
+                    <div class="support-box mt-4">
+                        <i class="fas fa-headset support-icon"></i>
+                        <h4>Need Help?</h4>
+                        <p class="small opacity-75 mb-3">Humari team WhatsApp par active hai.</p>
+                        <a href="https://wa.me/+330612132997" target="_blank" class="btn btn-light rounded-pill fw-bold px-4">
+                            <i class="fab fa-whatsapp text-success me-2"></i> Chat With Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+                <div class="accordion custom-accordion" id="faqAccordion">
+
+                    <div class="accordion-item" onclick="toggleActive(this)">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" style="background-color: #bfa030;" >
+                               Frequently Asked Question (FAQ)
+                            </button>
+                        </h2>
+                         
+                    </div>
+
+                    <div class="accordion-item" onclick="toggleActive(this)">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                Delivery kitne din mein hoti hai?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Lahore aur aas paas ke shehron mein humari delivery <strong>24 se 48 ghanton</strong> ke andar ho jati hai. Baqi shehron ke liye 3 se 4 din lag sakte hain.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" onclick="toggleActive(this)">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                Kya return policy available hai?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Jee haan! Agar aapko atta ki quality pasand na aaye ya roti naram na bane, to aap 7 din ke andar humein wapis kar sakte hain. Humare liye aapki satisfaction sab se pehle hai.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" onclick="toggleActive(this)">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                20KG Bag par delivery charges kya hain?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Khushkhabri! 20KG ya us se zyada ke order par delivery bilkul <strong>FREE</strong> hai. Chotay orders par mamooli delivery charges apply hotay hain.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" onclick="toggleActive(this)">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                Shelf life (Expiry) kitni hai?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Kyunke humare aattay mein koi chemical preservatives nahi hotay, is liye hum recommend karte hain ke isay <strong>30 se 45 din</strong> ke andar istemal kar lein taake aapko best fresh taste milay.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><script>
+    // Script to handle Golden Border on active item
+    function toggleActive(element) {
+        // Remove active class from all items
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.classList.remove('active-item');
+        });
+        // Add active class to clicked item (if it's not closing)
+        // Note: Bootstrap toggles classes after click, so we use a small timeout or logic check
+        // Simple logic: Just add it, CSS handles the rest
+        if(!element.querySelector('button').classList.contains('collapsed')) {
+             // Closing, do nothing
+        } else {
+            element.classList.add('active-item');
+        }
+    }
+    
+    // Auto-highlight the first one on load
+    document.querySelector('.accordion-item').classList.add('active-item');
+</script>
+ 
+<!--footerrrrrrrrrrrrrrrrrrrrrrrrr-->
+<footer class="footer">
+    
+   
+
+    <div class="container footer-content">
+        <div class="row">
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <a href="#" class="footer-logo">HUM SAB KA <span>ATTA</span></a>
+                <p class="footer-desc">
+                    100% Khalis Chakki Atta, sidha kisan ke khet se aapke kitchen tak. Hum quality par koi samjhota nahi karte. Sehat bhi, Zaiqa bhi.
+                </p>
+               <!-- <div class="social-icons mt-3">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>-->
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Our Process</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Recipes</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Products</h5>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> Brown Flour</a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> White Flour</a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> Suji</a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> Porridge (Daliya)</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 class="footer-heading">Get In Touch</h5>
+                
+               
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-info">
+                        <p>+ 33 (0) 6 12 13 29 97</p>
+                        <span>Mon to Sat (9am - 6pm)</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <p>contact@hamsabkaatta.com</p>
+                        <span>Drop us a mail anytime</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-md-start text-center">
+                    &copy; 2026 <strong>Hum Sab Ka Atta</strong>. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-md-end text-center mt-2 mt-md-0">
+                    Designed with <span class="heart-beat">❤</span> by 
+                    <a href="https://codedclouds.com" target="_blank" class="codedclouds-link">CodedClouds</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
