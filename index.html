@@ -750,7 +750,71 @@
         .faq-header-area { padding-right: 0; margin-bottom: 40px; }
     }
 </style>
+<!--sliderrrrrrrrrrrrrrr-->
+<style>
+    /* --- SCROLLING MARQUEE (The Patti) --- */
+.marquee-container {
+    background-color: #D4AF37; /* Primary Gold */
+    color: #212529; /* Dark Charcoal Text */
+    overflow: hidden; /* Text bahar na nikle */
+    padding: 12px 0;
+    position: relative;
+    width: 100%;
+    z-index: 50;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-top: 2px solid #212529;
+    border-bottom: 2px solid #212529;
+}
 
+.marquee-content {
+    display: flex;
+    white-space: nowrap; /* Text ko line mein rakhta hai */
+    align-items: center;
+    /* Animation Settings */
+    animation: scrollText 20s linear infinite;
+    width: max-content; /* Content ke hisaab se width */
+}
+
+.marquee-content span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0 20px;
+    display: inline-block;
+}
+
+.divider-icon {
+    font-size: 0.8rem;
+    color: #fffbf2; /* Cream star */
+    margin: 0 10px;
+    opacity: 0.8;
+}
+
+/* Animation Keyframes */
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Adha move karega taake loop smooth lage */
+    }
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .marquee-content span {
+        font-size: 1.4rem; /* Mobile par font chota */
+        margin: 0 15px;
+    }
+    .marquee-container {
+        padding: 10px 0;
+    }
+    .divider-icon {
+        font-size: 0.6rem;
+    }
+}
+</style>
 <!--footerrrrrrrrrrrrrrrrrrrrrrrrr-->
 <style>
     /* --- FOOTER CONTAINER --- */
@@ -1252,7 +1316,25 @@
     // Auto-highlight the first one on load
     document.querySelector('.accordion-item').classList.add('active-item');
 </script>
- 
+ <!--sliderrrrrrrrrrrrrrrrrrr-->
+ <div class="marquee-container">
+    <div class="marquee-content">
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALIT</span> <i class="fas fa-star divider-icon"></i>
+        
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALIT</span> <i class="fas fa-star divider-icon"></i>
+        
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
+        <span>PREMIUM QUALIT</span> <i class="fas fa-star divider-icon"></i>
+    </div>
+</div>
 <!--footerrrrrrrrrrrrrrrrrrrrrrrrr-->
 <footer class="footer">
     
