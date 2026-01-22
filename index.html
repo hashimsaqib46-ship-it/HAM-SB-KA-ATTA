@@ -31,77 +31,140 @@
             overflow-x: hidden;
         }
  
-        .navbar {
-            background: rgba(255, 255, 255, 0.1); /* Transparent Base */
-            backdrop-filter: blur(15px); /* Strong Blur Effect */
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .navbar-brand {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            color: var(--dark-charcoal) !important;
-        }
-        
-        .navbar-brand span {
-            color: var(--primary-gold);
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-charcoal) !important;
-            margin: 0 10px;
-            position: relative;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Nav Link Hover Effect */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -5px; left: 0;
-            background-color: var(--primary-gold);
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        .btn-custom {
-            border-radius: 50px;
-            padding: 10px 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .btn-primary-custom {
-            background-color: var(--dark-charcoal);
-            color: white;
-            border: 2px solid var(--dark-charcoal);
-        }
-        .btn-primary-custom:hover {
-            background-color: transparent;
-            color: var(--dark-charcoal);
-        }
-
-      /* 1. Video ko 'Fixed' kar denge taake wo hile nahi */
+       /* --- TUMHARA PURANA CODE (As it is) --- */
 .bg-video {
-    position: fixed;  /* Pehle 'absolute' tha, ab 'fixed' kar diya */
+    position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    z-index: -1; /* Sab se peeche bhej diya */
+    z-index: -1;
 }
 
+.navbar {
+    background: rgba(255, 255, 255, 0.1); /* Transparent Base */
+    backdrop-filter: blur(15px); /* Strong Blur Effect */
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: var(--dark-charcoal) !important;
+}
+
+.navbar-brand span {
+    color: var(--primary-gold);
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark-charcoal) !important;
+    margin: 0 10px;
+    position: relative;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    bottom: -5px; left: 0;
+    background-color: var(--primary-gold);
+    transition: width 0.3s;
+}
+.nav-link:hover::after { width: 100%; }
+
+.btn-custom {
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.btn-primary-custom {
+    background-color: var(--dark-charcoal);
+    color: white;
+    border: 2px solid var(--dark-charcoal);
+}
+.btn-primary-custom:hover {
+    background-color: transparent;
+    color: var(--dark-charcoal);
+}
+
+/* --- NEW ATTRACTIVE LANGUAGE SWITCHER CSS --- */
+
+.lang-switch-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5); /* Halka sa white background */
+    border: 1px solid var(--primary-gold); /* Gold Border */
+    border-radius: 30px;
+    padding: 3px;
+    position: relative;
+    overflow: hidden;
+    /* Shadow for attraction */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+}
+
+.lang-btn {
+    border: none;
+    background: transparent;
+    padding: 5px 12px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark-charcoal);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Flag size */
+.lang-flag {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+/* Jab Button Active Hoga (Clicked) */
+.lang-btn.active {
+    background-color: var(--primary-gold);
+    color: #fff; /* White Text on Gold */
+    box-shadow: 0 2px 4px rgba(191, 160, 48, 0.4);
+}
+
+/* Hover Effect */
+.lang-btn:hover:not(.active) {
+    background-color: rgba(191, 160, 48, 0.2); /* Light Gold Fade */
+}
+
+/* Mobile Friendly Adjustment */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.95); /* Mobile menu solid background */
+        backdrop-filter: blur(20px);
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .lang-switch-container {
+        display: inline-flex; /* Center it nicely */
+        margin-bottom: 15px;
+    }
+}
 /* 2. Hero Section ka background transparent rakhenge */
 .hero-section {
     position: relative;
@@ -468,7 +531,117 @@
         .blob-percent { font-size: 2rem; }
     }
 </style>
+<!--typeeeeeeeeeeeeeeeeeeeeeeeee-->
+<style>
+    /* --- FLOUR GUIDE SECTION --- */
+.flour-guide-section {
+    padding: 80px 0;
+    background-color: #fffbf2; /* Matches Body */
+}
 
+.sub-heading-gold {
+    color: #D4AF37;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: #212529;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+/* --- THE MINIMALIST "NON-CARD" --- */
+.flour-minimal-card {
+    text-align: center;
+    padding: 30px 20px;
+    transition: all 0.4s ease;
+    border-bottom: 3px solid transparent; /* Hidden border initially */
+    height: 100%;
+    position: relative;
+    /* No background initially for clean look */
+}
+
+/* Hover Effect: Text Uthaa deta hai aur Gold border lata hai */
+.flour-minimal-card:hover {
+    background: #fff; /* Thoda sa white background on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-bottom: 3px solid #D4AF37;
+    border-radius: 15px;
+}
+
+/* Icon Styling */
+.icon-wrap {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+/* T-Number Badge */
+.t-badge {
+    display: inline-block;
+    background: #212529;
+    color: #D4AF37;
+    font-family: 'Bebas Neue', sans-serif;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Highlight Card (Like Pizza T55) */
+.highlight-card .t-badge {
+    background: #D4AF37;
+    color: #212529;
+}
+
+/* Typography */
+.desi-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #212529;
+    margin-bottom: 5px;
+}
+
+.french-desc {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Usage List */
+.usage-list span {
+    display: block;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 5px;
+}
+.usage-list i {
+    color: #D4AF37;
+    margin-right: 8px;
+    font-size: 0.8rem;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-title { font-size: 2.5rem; }
+    .flour-minimal-card {
+        padding: 20px;
+        background: rgba(255,255,255,0.5); /* Mobile pe thoda sa visible background */
+        border-radius: 15px;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+}
+</style>
 <!--productsssssssssssssssssssssssssssss-->
 <style>
     /* --- PRODUCT SHOWCASE STYLING --- */
@@ -974,53 +1147,108 @@
 
 
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
 
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="./index.html">HUM SAB KA <span>ATTA</span></a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Comp/Process.html">Our Process</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Comp/Recipes.html">Recipes</a></li>
-                    <li class="nav-item ms-lg-3">
-                        <a href="./Comp/Order_now.html" class="btn btn-custom btn-primary-custom">Order Now</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-<!--herosectionnnnnnnnnnnnnnnn-->
-    <section class="hero-section">
+    <div class="container">
+        <a class="navbar-brand" href="./index.html">HUM SAB KA <span>ATTA</span></a>
         
-        <video class="bg-video" autoplay muted loop playsinline>
-            <source src="./images/hero.webm" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <script>
+            // Ye function tumhare existing code mein add karo
+function changeLang(lang) {
+    // 1. Translation Function Call karo (Jo tumne pehle banaya tha)
+    updateContent(lang); 
 
-        <div class="overlay-layer d-flex align-items-center justify-content-center flex-column">
-            <div class="hero-content">
-                <h1 class="masked-text">PURE ORGANIC TASTE</h1>
-                <h1 class="masked-text"></h1>
-                <h1 class="masked-text"></h1>
-            </div>
+    // 2. Buttons ki Styling update karo
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Jo click hua usko Active karo
+    document.getElementById('btn-' + lang).classList.add('active');
+}
+        </script>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="./index.html" data-i18n="navHome">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Comp/Process.html" data-i18n="navProcess">Our Process</a></li>
+                <li class="nav-item"><a class="nav-link" href="./Comp/Recipes.html" data-i18n="navRecipes">Recipes</a></li>
+                
+                
+
+                <li class="nav-item ms-lg-3">
+                    <a href="./Comp/Order_now.html" class="btn btn-custom btn-primary-custom" data-i18n="navOrder">Order Now</a>
+                </li>
+                <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                    <div class="lang-switch-container">
+                        <button class="lang-btn active" onclick="changeLang('en')" id="btn-en">
+                            <span class="lang-flag">🇬🇧</span> EN
+                        </button>
+                        <button class="lang-btn" onclick="changeLang('pt')" id="btn-pt">
+                            <span class="lang-flag">🇵🇹</span> PT
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
+    </div>
+</nav>
+<!--nherooooooooooooooooooooooooo-->
+<section class="hero-section">
+    
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="./images/hero.webm" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-        <div class="cta-container text-center">
-            <p class="sub-hero-text mb-4">Freshly Milled • STONE GROUND • NO PRESERVATIVES</p>
-            <a href="./Comp/Order_now.html" class="btn-hero">SHOP NOW <i class="fas fa-arrow-right ms-2"></i></a>
+    <div class="overlay-layer d-flex align-items-center justify-content-center flex-column">
+        <div class="hero-content">
+            <h1 class="masked-text" data-i18n="heroTitle">PURE ORGANIC TASTE</h1>
+            <h1 class="masked-text"></h1>
+            <h1 class="masked-text"></h1>
         </div>
+    </div>
 
-         
+    <div class="cta-container text-center">
+        <p class="sub-hero-text mb-4" data-i18n="heroSub">Freshly Milled • STONE GROUND • NO PRESERVATIVES</p>
+        <a href="./Comp/Order_now.html" class="btn-hero">
+            <span data-i18n="heroBtn">SHOP NOW</span> 
+            <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
 
-    </section>
+</section>
 
 <!--impactttttttttttttttttttttttttttttttttttt-->
 <section class="impact-section">
@@ -1035,10 +1263,15 @@
             </div>
 
             <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
-                <span class="section-subtitle">The Purity You Trust</span>
-                <h2 class="section-title">100% Atta,<br><p style="color: #bfa03084; font-size: 50px;">0% Milawat</p></h2>
-                <p class="lead text-muted mb-4">
-                    Humara atta sidha kisan ke khet se, bina kisi chemical ya milawat ke aap tak pohanchta hai. Wohi purana zaiqa, nayi packing mein.
+                <span class="section-subtitle" data-i18n="impactSub">The Purity You Trust</span>
+                
+                <h2 class="section-title">
+                    <span data-i18n="impactTitle1">100% Whole Wheat,</span><br>
+                    <p style="color: #bfa03084; font-size: 50px;" data-i18n="impactTitle2">0% Additives</p>
+                </h2>
+                
+                <p class="lead text-muted mb-4" data-i18n="impactDesc">
+                    Our flour reaches you directly from the farmer's field, without any chemicals or mixing. The same traditional taste, now in new packaging.
                 </p>
 
                 <div class="row g-3">
@@ -1047,8 +1280,8 @@
                         <div class="feature-card">
                             <div class="icon-box"><i class="fas fa-leaf"></i></div>
                             <div class="feature-text">
-                                <h5>100% Whole Wheat</h5>
-                                <p>Poora anaaj, poori taqat.</p>
+                                <h5 data-i18n="feat1Title">100% Whole Wheat</h5>
+                                <p data-i18n="feat1Desc">Whole grain, full power.</p>
                             </div>
                         </div>
                     </div>
@@ -1057,8 +1290,8 @@
                         <div class="feature-card">
                             <div class="icon-box"><i class="fas fa-bread-slice"></i></div>
                             <div class="feature-text">
-                                <h5>Soft Rotis</h5>
-                                <p>Subah se shaam tak naram.</p>
+                                <h5 data-i18n="feat2Title">Soft Rotis</h5>
+                                <p data-i18n="feat2Desc">Soft from morning to evening.</p>
                             </div>
                         </div>
                     </div>
@@ -1067,24 +1300,25 @@
                         <div class="feature-card">
                             <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
                             <div class="feature-text">
-                                <h5>Rich in Fiber</h5>
-                                <p>Hazma behtar, sehat behtar.</p>
+                                <h5 data-i18n="feat3Title">Rich in Fiber</h5>
+                                <p data-i18n="feat3Desc">Better digestion, better health.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="feature-card">
-                            <div class="icon-box"><i class="fas fa-leaf"></i></div>
-                            <div class="feature-text">
-                                <h5>Stone Ground</h5>
-                                <p>Desi Chakki ka asli maza.</p>
+                            <div class="icon-box"><i class="fas fa-mortar-pestle"></i></div> <div class="feature-text">
+                                <h5 data-i18n="feat4Title">Stone Ground</h5>
+                                <p data-i18n="feat4Desc">Real taste of traditional mill.</p>
                             </div>
                         </div>
                     </div>
 
-                </div> <div class="mt-4">
-                    <a href="./Comp/Process.html" class="btn btn-custom btn-primary-custom mt-3">See Our Process</a>
+                </div> 
+                
+                <div class="mt-4">
+                    <a href="./Comp/Process.html" class="btn btn-custom btn-primary-custom mt-3" data-i18n="btnProcess">See Our Process</a>
                 </div>
 
             </div>
@@ -1096,14 +1330,14 @@
       once: true
   });
 </script>
-
-<!--nutrii break downnnnnnnnnnnnnnnnn-->
+<script></script>
+<!--nutriiiiii sectionnnnnnnnnnnn-->
 <section class="nutrition-section">
     <div class="container">
         
         <div data-aos="fade-up">
-            <h2 class="nutrition-title">What's Inside The Bag?</h2>
-            <p class="nutrition-subtitle">Sirf pait nahi bharta, sehat bhi banata hai. Humare har danay mein qudrati taqat hai.</p>
+            <h2 class="nutrition-title" data-i18n="nutriTitle">What's Inside The Bag?</h2>
+            <p class="nutrition-subtitle" data-i18n="nutriSub">Not just filling your stomach, but building health. Natural power in every grain.</p>
         </div>
 
         <div class="row g-4">
@@ -1112,10 +1346,10 @@
                 <div class="nutri-card">
                     <div class="blob-shape blob-1">
                         <span class="blob-percent">12%</span>
-                        <span class="blob-label">Protein</span>
+                        <span class="blob-label" data-i18n="nutri1Label">Protein</span>
                     </div>
-                    <div class="nutri-desc">Natural Strength</div>
-                    <div class="nutri-detail">Muscles ki taqat ke liye.</div>
+                    <div class="nutri-desc" data-i18n="nutri1Desc">Natural Strength</div>
+                    <div class="nutri-detail" data-i18n="nutri1Detail">For muscle strength.</div>
                 </div>
             </div>
 
@@ -1123,10 +1357,10 @@
                 <div class="nutri-card">
                     <div class="blob-shape blob-2">
                         <span class="blob-percent">15%</span>
-                        <span class="blob-label">Fiber</span>
+                        <span class="blob-label" data-i18n="nutri2Label">Fiber</span>
                     </div>
-                    <div class="nutri-desc">Easy Digestion</div>
-                    <div class="nutri-detail">Hazma rakhe durust.</div>
+                    <div class="nutri-desc" data-i18n="nutri2Desc">Easy Digestion</div>
+                    <div class="nutri-detail" data-i18n="nutri2Detail">Keeps digestion healthy.</div>
                 </div>
             </div>
 
@@ -1134,10 +1368,10 @@
                 <div class="nutri-card">
                     <div class="blob-shape blob-3">
                         <span class="blob-percent">100%</span>
-                        <span class="blob-label">Whole</span>
+                        <span class="blob-label" data-i18n="nutri3Label">Whole</span>
                     </div>
-                    <div class="nutri-desc">Zero Maida</div>
-                    <div class="nutri-detail">Sirf gandum, no milawat.</div>
+                    <div class="nutri-desc" data-i18n="nutri3Desc">Zero Refined</div>
+                    <div class="nutri-detail" data-i18n="nutri3Detail">Only wheat, no mixing.</div>
                 </div>
             </div>
 
@@ -1147,44 +1381,148 @@
                         <span class="blob-percent">VIT</span>
                         <span class="blob-label">B1 & B3</span>
                     </div>
-                    <div class="nutri-desc">Energy Boost</div>
-                    <div class="nutri-detail">Pura din active rahein.</div>
+                    <div class="nutri-desc" data-i18n="nutri4Desc">Energy Boost</div>
+                    <div class="nutri-detail" data-i18n="nutri4Detail">Stay active all day.</div>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+<!--typeeeeeeeeeeeeeeeeeeeeeeeee-->
+<section class="flour-guide-section">
+    <div class="container">
+        
+        <div class="text-center mb-5">
+            <span class="sub-heading-gold" data-i18n="guideSub">KNOW YOUR FLOUR</span>
+            <h2 class="section-title" data-i18n="guideTitle">French Grading System <br> (Desi Guide)</h2>
+            <p class="text-muted" style="max-width: 600px; margin: 0 auto;" data-i18n="guideDesc">
+                Our flour follows the French T-System. Choose the right flour for the right dish.
+            </p>
+        </div>
 
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card">
+                    <div class="icon-wrap"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="t-badge">TYPE 45</div>
+                    <h3 class="desi-name" data-i18n="t45Name">Super Fine Maida</h3>
+                    <p class="french-desc" data-i18n="t45Desc">Ultra-White & Light</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t45u1">Pastries</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t45u2">Cakes</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t45u3">Brioche</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card highlight-card"> 
+                    <div class="icon-wrap"><i class="fas fa-pizza-slice"></i></div>
+                    <div class="t-badge">TYPE 55</div>
+                    <h3 class="desi-name" data-i18n="t55Name">Normal Maida</h3>
+                    <p class="french-desc" data-i18n="t55Desc">Classic All-Purpose</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t55u1">Pizza (Best)</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t55u2">Naan</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t55u3">White Bread</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card">
+                    <div class="icon-wrap"><i class="fas fa-bread-slice"></i></div>
+                    <div class="t-badge">TYPE 65</div>
+                    <h3 class="desi-name" data-i18n="t65Name">Artisan Maida</h3>
+                    <p class="french-desc" data-i18n="t65Desc">Crunchy Crust</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t65u1">Baguettes</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t65u2">Hard Rolls</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t65u3">Artisan Bread</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card">
+                    <div class="icon-wrap"><i class="fas fa-wheat"></i></div>
+                    <div class="t-badge">TYPE 80</div>
+                    <h3 class="desi-name" data-i18n="t80Name">Chan'na Atta</h3>
+                    <p class="french-desc" data-i18n="t80Desc">Light Brown / Semi-Refined</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t80u1">Sourdough</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t80u2">Brown Bread</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t80u3">Healthy Cookies</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card">
+                    <div class="icon-wrap"><i class="fas fa-utensils"></i></div>
+                    <div class="t-badge">TYPE 110</div>
+                    <h3 class="desi-name" data-i18n="t110Name">Chakki Atta</h3>
+                    <p class="french-desc" data-i18n="t110Desc">Traditional Brown</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t110u1">Daily Roti</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t110u2">Paratha</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t110u3">Rustic Bread</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="flour-minimal-card">
+                    <div class="icon-wrap"><i class="fas fa-seedling"></i></div>
+                    <div class="t-badge">TYPE 150</div>
+                    <h3 class="desi-name" data-i18n="t150Name">Poora Atta</h3>
+                    <p class="french-desc" data-i18n="t150Desc">100% Whole Wheat (Fiber)</p>
+                    <div class="usage-list">
+                        <span><i class="fas fa-check"></i> <span data-i18n="t150u1">Diet Roti</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t150u2">Fiber Bread</span></span>
+                        <span><i class="fas fa-check"></i> <span data-i18n="t150u3">Bran Muffins</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 <!--productsssssssssssssssssssssssssssss-->
 <section class="more-products-section">
     <div class="container">
         
         <div class="section-header-center" data-aos="fade-up">
-            <span class="sub-tag">Complete Range</span>
-            <h2 class="main-head">More From Our Family</h2>
-            <p class="text-muted">Sirf Atta hi nahi, hum late hain aapke kitchen ke liye aur bhi khalis cheezein.</p>
+            <span class="sub-tag" data-i18n="prodSub">Complete Range</span>
+            <h2 class="main-head" data-i18n="prodTitle">More From Our Family</h2>
+            <p class="text-muted" data-i18n="prodDesc">More than just flour, we bring pure essentials to your kitchen.</p>
         </div>
 
         <div class="product-grid">
             
             <div class="prod-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="prod-splash splash-1"></div>
-                <img src="./images/yellow.png" alt="loading..." class="prod-img" style="max-width: 85%;">
+                <img src="./images/yellow.png" alt="White Flour" class="prod-img" style="max-width: 67%;">
                 <div class="prod-details">
-                    <h3 class="prod-title">White Flour</h3>
-                    <p class="prod-desc">For Pizza, Naan & Baking.</p>
-                    <a href="#" class="shop-btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="prod-title" data-i18n="p1Title">White Flour</h3>
+                    <p class="prod-desc" data-i18n="p1Desc">For Pizza, Naan & Baking.</p>
+                    <a href="#" class="shop-btn-link">
+                        <span data-i18n="btnView">View Details</span> <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="prod-item" data-aos="fade-up" data-aos-delay="200">
                 <div class="prod-splash splash-2"></div>
-                <img src="./images/contact.png" alt="loading..." class="prod-img">
+                <img src="./images/contact.png" alt="Brown Flour" class="prod-img">
                 <div class="prod-details">
-                    <h3 class="prod-title">Brown Flour</h3>
-                    <p class="prod-desc">Perfect for Rozana roti / chapati.</p>
-                    <a href="#" class="shop-btn-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="prod-title" data-i18n="p2Title">Brown Flour</h3>
+                    <p class="prod-desc" data-i18n="p2Desc">Perfect for Daily Roti / Chapati.</p>
+                    <a href="#" class="shop-btn-link">
+                        <span data-i18n="btnView">View Details</span> <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
 
@@ -1192,9 +1530,11 @@
                 <div class="prod-splash splash-3"></div>
                 <img src="./images/contact.png" alt="Wheat Porridge" class="prod-img">
                 <div class="prod-details">
-                    <h3 class="prod-title">Unavaliable Right Now</h3>
+                    <h3 class="prod-title" data-i18n="p3Title">Unavailable Right Now</h3>
                     <p class="prod-desc">- - -</p>
-                    <a href="#" class="shop-btn-link">No More Details <i class="fas"></i></a>
+                    <a href="#" class="shop-btn-link">
+                        <span data-i18n="btnNoView">No More Details</span> <i class="fas"></i>
+                    </a>
                 </div>
             </div>
 
@@ -1202,26 +1542,25 @@
 
     </div>
 </section>
-
-<!--freqqqqqqqqqqqqqqqqqqqqqqqqquestions-->
+<!--FAQQQQQQQQQQQQQQQQQQQQQQQQQQ-->
 <section class="faq-section">
     <div class="container">
         <div class="row">
             
             <div class="col-lg-5 mb-4" data-aos="fade-right">
                 <div class="faq-header-area">
-                    <span class="text-uppercase text-muted fw-bold ls-2 small">Common Queries</span>
-                    <h2 class="faq-title">You Ask,<br>We Answer.</h2>
-                    <p class="faq-text">
-                       Khareedari se pehle aam sawalon ke jawab yahan mojood hain aap ka bharosa hamari zimmedari hai
+                    <span class="text-uppercase text-muted fw-bold ls-2 small" data-i18n="faqSub">Common Queries</span>
+                    <h2 class="faq-title" data-i18n="faqTitle">You Ask,<br>We Answer.</h2>
+                    <p class="faq-text" data-i18n="faqDesc">
+                        Answers to common questions before you buy. Your trust is our responsibility.
                     </p>
 
                     <div class="support-box mt-4">
                         <i class="fas fa-headset support-icon"></i>
-                        <h4>Need Help?</h4>
-                        <p class="small opacity-75 mb-3">Humari team WhatsApp par active hai.</p>
+                        <h4 data-i18n="helpTitle">Need Help?</h4>
+                        <p class="small opacity-75 mb-3" data-i18n="helpDesc">Our team is active on WhatsApp.</p>
                         <a href="https://wa.me/+330612132997" target="_blank" class="btn btn-light rounded-pill fw-bold px-4">
-                            <i class="fab fa-whatsapp text-success me-2"></i> Chat With Us
+                            <i class="fab fa-whatsapp text-success me-2"></i> <span data-i18n="btnChat">Chat With Us</span>
                         </a>
                     </div>
                 </div>
@@ -1232,61 +1571,60 @@
 
                     <div class="accordion-item" onclick="toggleActive(this)">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" style="background-color: #bfa030;" >
+                            <button class="accordion-button" type="button" style="background-color: #bfa030;" data-i18n="faqHead">
                                Frequently Asked Question (FAQ)
                             </button>
                         </h2>
-                         
                     </div>
 
                     <div class="accordion-item" onclick="toggleActive(this)">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                Delivery kitne din mein hoti hai?
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" data-i18n="qDelivery">
+                                How many days for delivery?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Lahore aur aas paas ke shehron mein humari delivery <strong>24 se 48 ghanton</strong> ke andar ho jati hai. Baqi shehron ke liye 3 se 4 din lag sakte hain.
+                            <div class="accordion-body" data-i18n="aDelivery">
+                                Delivery takes <strong>24 to 48 hours</strong> in Lahore. For other cities, it may take 3 to 4 days.
                             </div>
                         </div>
                     </div>
 
                     <div class="accordion-item" onclick="toggleActive(this)">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                Kya return policy available hai?
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" data-i18n="qReturn">
+                                Is there a return policy?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Jee haan! Agar aapko atta ki quality pasand na aaye ya roti naram na bane, to aap 7 din ke andar humein wapis kar sakte hain. Humare liye aapki satisfaction sab se pehle hai.
+                            <div class="accordion-body" data-i18n="aReturn">
+                                Yes! If you don't like the quality or the roti isn't soft, you can return it within 7 days. Your satisfaction comes first.
                             </div>
                         </div>
                     </div>
 
                     <div class="accordion-item" onclick="toggleActive(this)">
                         <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                20KG Bag par delivery charges kya hain?
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" data-i18n="qCharges">
+                                What are the delivery charges for 20KG?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Khushkhabri! 20KG ya us se zyada ke order par delivery bilkul <strong>FREE</strong> hai. Chotay orders par mamooli delivery charges apply hotay hain.
+                            <div class="accordion-body" data-i18n="aCharges">
+                                Great news! Delivery is absolutely <strong>FREE</strong> on orders of 20KG or more. Small delivery charges apply to smaller orders.
                             </div>
                         </div>
                     </div>
 
                     <div class="accordion-item" onclick="toggleActive(this)">
                         <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-                                Shelf life (Expiry) kitni hai?
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" data-i18n="qShelf">
+                                What is the Shelf Life (Expiry)?
                             </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Kyunke humare aattay mein koi chemical preservatives nahi hotay, is liye hum recommend karte hain ke isay <strong>30 se 45 din</strong> ke andar istemal kar lein taake aapko best fresh taste milay.
+                            <div class="accordion-body" data-i18n="aShelf">
+                                Since our flour has no chemical preservatives, we recommend using it within <strong>30 to 45 days</strong> for the best fresh taste.
                             </div>
                         </div>
                     </div>
@@ -1317,25 +1655,22 @@
     document.querySelector('.accordion-item').classList.add('active-item');
 </script>
  <!--sliderrrrrrrrrrrrrrrrrrr-->
- <div class="marquee-container">
+<div class="marquee-container">
     <div class="marquee-content">
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText1">Produced & Packed in FRANCE</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText2">PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
         
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText1">Produced & Packed in FRANCE</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText2">PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
         
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
-        <span>MADE IN FRANCE 🇫🇷</span> <i class="fas fa-star divider-icon"></i>
-        <span>PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText1">Produced & Packed in FRANCE</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText2">PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
+        
+        <span data-i18n="mqText1">Produced & Packed in FRANCE</span> <i class="fas fa-star divider-icon"></i>
+        <span data-i18n="mqText2">PREMIUM QUALITY</span> <i class="fas fa-star divider-icon"></i>
     </div>
 </div>
-<!--footerrrrrrrrrrrrrrrrrrrrrrrrr-->
+<!--footerrrrrrrrrrrrrrrrrrrrrr-->
 <footer class="footer">
     
     <div class="container footer-content">
@@ -1343,47 +1678,39 @@
             
             <div class="col-lg-4 col-md-6 mb-4">
                 <a href="#" class="footer-logo">HUM SAB KA <span>ATTA</span></a>
-                <p class="footer-desc">
-                    100% Khalis Chakki Atta, sidha kisan ke khet se aapke kitchen tak. Hum quality par koi samjhota nahi karte. Sehat bhi, Zaiqa bhi.
+                <p class="footer-desc" data-i18n="footerDesc">
+                    100% Pure Stone Ground Flour, straight from the farmer's field to your kitchen. We never compromise on quality. Health and Taste combined.
                 </p>
-               <!-- <div class="social-icons mt-3">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>-->
-            </div>
+                </div>
 
             <div class="col-lg-2 col-md-6 mb-4">
-                <h5 class="footer-heading">Quick Links</h5>
+                <h5 class="footer-heading" data-i18n="linkTitle">Quick Links</h5>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Our Process</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Recipes</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="lnkHome">Home</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="lnkProcess">Our Process</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="lnkRecipes">Recipes</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="lnkOrder">Order Now</span></a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-6 mb-4">
-                <h5 class="footer-heading">Products</h5>
+                <h5 class="footer-heading" data-i18n="prodTitle">Products</h5>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-circle-notch"></i> Brown Flour</a></li>
-                    <li><a href="#"><i class="fas fa-circle-notch"></i> White Flour</a></li>
-                    <li><a href="#"><i class="fas fa-circle-notch"></i> Suji</a></li>
-                    <li><a href="#"><i class="fas fa-circle-notch"></i> Porridge (Daliya)</a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> <span data-i18n="mnBrown">Brown Flour</span></a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> <span data-i18n="mnWhite">White Flour</span></a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> <span data-i18n="mnSuji">Semolina (Suji)</span></a></li>
+                    <li><a href="#"><i class="fas fa-circle-notch"></i> <span data-i18n="mnDaliya">Porridge (Daliya)</span></a></li>
                 </ul>
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-                <h5 class="footer-heading">Get In Touch</h5>
+                <h5 class="footer-heading" data-i18n="contactTitle">Get In Touch</h5>
                 
-               
-
                 <div class="contact-item">
                     <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                     <div class="contact-info">
                         <p>+ 33 (0) 6 12 13 29 97</p>
-                        <span>Mon to Sat (9am - 6pm)</span>
+                        <span data-i18n="contHours">Mon to Sat (9am - 6pm)</span>
                     </div>
                 </div>
 
@@ -1391,7 +1718,7 @@
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-info">
                         <p>contact@hamsabkaatta.com</p>
-                        <span>Drop us a mail anytime</span>
+                        <span data-i18n="contMail">Drop us a mail anytime</span>
                     </div>
                 </div>
 
@@ -1401,10 +1728,10 @@
         <div class="copyright-area">
             <div class="row align-items-center">
                 <div class="col-md-6 text-md-start text-center">
-                    &copy; 2026 <strong>Hum Sab Ka Atta</strong>. All Rights Reserved.
+                    &copy; 2026 <strong>Hum Sab Ka Atta</strong>. <span data-i18n="copyText">All Rights Reserved.</span>
                 </div>
                 <div class="col-md-6 text-md-end text-center mt-2 mt-md-0">
-                    Designed with <span class="heart-beat">❤</span> by 
+                    <span data-i18n="designBy">Designed with</span> <span class="heart-beat">❤</span> <span data-i18n="byText">by</span> 
                     <a href="https://codedclouds.com" target="_blank" class="codedclouds-link">CodedClouds</a>
                 </div>
             </div>
@@ -1412,7 +1739,6 @@
 
     </div>
 </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
